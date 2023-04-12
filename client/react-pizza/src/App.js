@@ -1,12 +1,16 @@
 import React from "react";
 
 import Header from "./Header";
+import Button from "./Button";
 
 
 function App() {
   return (
     <div className="wrapper">
       <Header/>
+      <Button outline>Btn 1</Button>
+      <Button>Button 2</Button>
+ 
     <div className="content">
       <div className="container">
         <div className="content__top">
