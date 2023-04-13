@@ -13,17 +13,18 @@ const Categories = ({ items }) => {
         <li className={activeItem === null ? 'active' : ''} onClick={() => onSelectItem(null)}>
           Все
         </li>
-        {items.map((el, id) => {
-          return (
-            <li
-              className={activeItem === id ? 'active' : ''}
-              onClick={() => onSelectItem(id)}
-              key={`${el}_${id}`}
-            >
-              {el}
-            </li>
-          );
-        })}
+        {items &&
+          items.map((el, id) => {
+            return (
+              <li
+                className={activeItem === id ? 'active' : ''}
+                onClick={() => onSelectItem(id)}
+                key={`${el}_${id}`}
+              >
+                {el}
+              </li>
+            );
+          })}
       </ul>
     </div>
   );
