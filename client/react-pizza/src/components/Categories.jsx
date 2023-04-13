@@ -12,5 +12,4 @@ const Categories = ({ items }) => {
     </div>
   );
 };
-
 export default Categories;
