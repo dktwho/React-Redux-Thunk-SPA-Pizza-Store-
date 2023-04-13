@@ -5,15 +5,16 @@ import { Header, Categories } from './components'
 
 
 function App() {
-
-  
+ 
   return (
     <div className="wrapper">
       <Header/>
     <div className="content">
       <div className="container">
         <div className="content__top">
-          <Categories items={['Мясные', 'Вегетарианская', 'Гриль', 'Гриль', 'Закрытые']}/>
+          <Categories 
+          items={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']}
+          onClickItem={(name) => console.log(name)}  />
           <div className="sort">
             <div className="sort__label">
               <svg
