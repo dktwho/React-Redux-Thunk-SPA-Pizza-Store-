@@ -5,6 +5,7 @@ const SortPopup = ({ items }) => {
   const [activeItem, setActiveItem] = useState(0);
 
   const sortRef = useRef();
+  const activelabel = items[activeItem];
 
   const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
@@ -22,6 +23,7 @@ const SortPopup = ({ items }) => {
 
   const onSelectItem = (id) => {
     setActiveItem(id);
+    setVisiblePopup(false);
   };
 
   return (
@@ -40,7 +42,7 @@ const SortPopup = ({ items }) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={toggleVisiblePopup}>популярности</span>
+        <span onClick={toggleVisiblePopup}>{activelabel}</span>
       </div>
       {visiblePopup && (
         <div className="sort__popup">
