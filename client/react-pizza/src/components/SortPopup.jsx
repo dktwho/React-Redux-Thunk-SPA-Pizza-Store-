@@ -5,7 +5,7 @@ const SortPopup = () => {
   const sortRef = useRef();
   console.log(sortRef.current);
 
-  const toggleVisiblePopus = () => {
+  const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
   };
 
@@ -35,7 +35,7 @@ const SortPopup = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={toggleVisiblePopus}>популярности</span>
+        <span onClick={toggleVisiblePopup}>популярности</span>
       </div>
       {visiblePopup && (
         <div className="sort__popup">
