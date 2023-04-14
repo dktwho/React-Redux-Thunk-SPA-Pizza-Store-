@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const SortPopup = () => {
+const SortPopup = ({ items }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
+  const [activeItem, setActiveItem] = useState(0);
+
   const sortRef = useRef();
-  console.log(sortRef.current);
 
   const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
@@ -18,6 +19,10 @@ const SortPopup = () => {
   useEffect(() => {
     document.body.addEventListener('click', handleoutsideClick);
   }, []);
+
+  const onSelectItem = (id) => {
+    setActiveItem(id);
+  };
 
   return (
     <div ref={sortRef} className="sort">
@@ -40,9 +45,18 @@ const SortPopup = () => {
       {visiblePopup && (
         <div className="sort__popup">
           <ul>
-            <li className="active">популярности</li>
-            <li>цене</li>
-            <li>алфавиту</li>
+            {items &&
+              items.map((el, id) => {
+                return (
+                  <li
+                    className={activeItem === id ? 'active' : ''}
+                    onClick={() => onSelectItem(id)}
+                    key={`${el}_${id}`}
+                  >
+                    {el}
+                  </li>
+                );
+              })}
           </ul>
         </div>
       )}
