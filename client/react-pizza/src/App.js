@@ -11,15 +11,13 @@ function App() {
     .then(response => response.json())
     .then(json => setPizzas(json.pizzas))
   }, [])
-
-  console.log(pizzas)
  
   return (
     <div className="wrapper">
       <Header/>
     <div className="content">
     <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home items={pizzas} />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
