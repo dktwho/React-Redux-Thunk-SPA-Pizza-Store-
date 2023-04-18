@@ -46,4 +46,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setPizzas: (items) => dispatch(setPizzas(items)),
+    dispatch,
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
