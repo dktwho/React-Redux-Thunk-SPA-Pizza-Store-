@@ -1,16 +1,7 @@
-import { createStore } from 'redux'
+import { createStore  } from 'redux'
+import rootReducer from './reducers/rootReducer';
 
-function counterReducer(state = { value: 5 }, action) {
-  switch (action.type) {
-    case 'incremented':
-      return { value: state.value + 1 }
-    case 'decremented':
-      return { value: state.value - 1 }
-    default:
-      return state
-  }
-}
 
-const store = createStore(counterReducer)
+const store = createStore(rootReducer)
 
 export default store;
