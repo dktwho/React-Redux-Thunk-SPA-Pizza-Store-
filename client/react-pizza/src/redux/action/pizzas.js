@@ -5,3 +5,4 @@ const setPizzas = (items) => ({
   payload: items,
 })
 
+export default setPizzas
