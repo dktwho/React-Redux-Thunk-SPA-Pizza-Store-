@@ -7,12 +7,16 @@ const Home = () => {
   const dispatch = useDispatch();
   const items = useSelector(({ pizzas }) => pizzas.items);
 
+  const onSelectCategory = (index) => {
+    dispatch(setCategory(index));
+  };
+
   return (
     <div className="container">
       <div className="content__top">
         <Categories
           items={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']}
-          onClickItem={(index) => dispatch(setCategory(index))}
+          onClickItem={onSelectCategory}
         />
         <SortPopup
           items={[

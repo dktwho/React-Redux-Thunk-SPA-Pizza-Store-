@@ -4,7 +4,7 @@ import { Header } from './components'
 import { Home, Cart } from './pages'
 import axios from 'axios'
 // import store from './redux/store'
-import {setPizzas} from "./redux/action/pizzas";
+import { setPizzas } from "./redux/action/pizzas";
 import { useDispatch } from 'react-redux'
 
 function App () {
