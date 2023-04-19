@@ -5,12 +5,22 @@ import { Home, Cart } from './pages'
 import axios from 'axios'
 // import store from './redux/store'
 import setPizzas from "./redux/action/pizzas";
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-function App ({ setPizzas, items }) {
+function App () {
+ const dispatch = useDispatch();
+ const { items } = useSelector(({ pizzas, filters }) => {
+  return {
+    items: pizzas.items,
+    // sortBy: filters.sortBy,
+  }
+ });
+
+
   useEffect(() => {
-    axios.get('http://localhost:3000/db.json')
-    .then(({ data }) => {setPizzas(data.pizzas)})   
+    axios.get('http://localhost:3000/db.json').then(({ data }) => {
+      dispatch(setPizzas(data.pizzas))
+    })
   }, [])
 
   return (
@@ -27,17 +37,7 @@ function App ({ setPizzas, items }) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.pizzas.items
-  }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setPizzas: (items) => dispatch(setPizzas(items)),
-    dispatch,
-   }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
+
