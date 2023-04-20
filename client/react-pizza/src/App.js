@@ -7,9 +7,7 @@ import { useDispatch } from 'react-redux'
 
 function App () {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchPizzas())
-  }, [])
+  
 
   return (
     <div className="wrapper">
