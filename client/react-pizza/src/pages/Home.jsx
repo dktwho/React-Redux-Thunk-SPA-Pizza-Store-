@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories items={categoryNames} onClickItem={onSelectCategory} />
+        <Categories activeCategory={category} items={categoryNames} onClickItem={onSelectCategory} />
         <SortPopup items={sortItems} />
       </div>
       <h2 className="content__title">Все пиццы</h2>

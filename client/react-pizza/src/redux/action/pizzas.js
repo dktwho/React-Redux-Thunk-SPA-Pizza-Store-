@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
+
 
 export const setLoaded = payload => ({
   type: 'SET_LOADED',
@@ -7,9 +7,9 @@ export const setLoaded = payload => ({
 })
 
  const fetchPizzas = () => (dispatch) => {
-  //const dispatch = useDispatch();
+  dispatch(setLoaded(false))
   axios.get('http://localhost:3001/pizzas').then(({ data }) => {
-    dispatch(setPizzas(data))
+  dispatch(setPizzas(data))
   })
 }
 
