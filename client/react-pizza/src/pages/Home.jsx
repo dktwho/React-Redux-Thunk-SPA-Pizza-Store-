@@ -15,10 +15,11 @@ const Home = () => {
   const dispatch = useDispatch();
   const items = useSelector(({ pizzas }) => pizzas.items);
   const isLoaded = useSelector(({ pizzas }) => pizzas.isLoaded);
+  const { category, sortBy } = useSelector(({ filters }) => filters);
 
   useEffect(() => {
     dispatch(fetchPizzas());
-  }, []);
+  }, [category]);
 
   const onSelectCategory = useCallback((index) => {
     dispatch(setCategory(index));
@@ -34,7 +35,9 @@ const Home = () => {
       <div className="content__items">
         {isLoaded
           ? items.map((elem) => <PizzaBlock key={elem.id} isLoading={true} {...elem} />)
-          : Array(12).fill(<PizzaLoadingBlock />)}
+          : Array(12)
+              .fill(0)
+              .map((_, idx) => <PizzaLoadingBlock key={idx} />)}
       </div>
     </div>
   );
