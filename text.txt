@@ -1,2 +1,2 @@
 npm i classnames
-
+npm run server for back json-server

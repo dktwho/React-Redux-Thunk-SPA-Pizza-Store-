@@ -19,15 +19,21 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchPizzas(category, sortBy));
-  }, [category, sortBy]);
+  }, [category, sortBy, dispatch]);
 
-  const onSelectCategory = useCallback((index) => {
-    dispatch(setCategory(index));
-  }, []);
+  const onSelectCategory = useCallback(
+    (index) => {
+      dispatch(setCategory(index));
+    },
+    [dispatch],
+  );
 
-  const onSelectSortType = useCallback((type) => {
-    dispatch(setSortBy(type));
-  }, []);
+  const onSelectSortType = useCallback(
+    (type) => {
+      dispatch(setSortBy(type));
+    },
+    [dispatch],
+  );
 
   return (
     <div className="container">
