@@ -42,6 +42,17 @@ switch (action.type) {
       totalCount: 0,
     }
 
+    case 'REMOVE_CART_ITEM': {
+    const newItems = {
+      ...state.items
+    }
+    delete newItems[action.payload]
+    return {
+      ...state, 
+      items:newItems
+    }
+  }
+
   default:
     return state;
   }
