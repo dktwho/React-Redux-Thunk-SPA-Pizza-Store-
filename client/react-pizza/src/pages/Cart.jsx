@@ -94,6 +94,7 @@ const Cart = () => {
                 type={obj.type}
                 size={obj.size}
                 totalPrice={items[obj.id].totalPrice}
+                totalCount={items[obj.id].items.length}
               />
             ))}
           </div>
