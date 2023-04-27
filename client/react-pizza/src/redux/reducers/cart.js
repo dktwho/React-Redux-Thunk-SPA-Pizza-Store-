@@ -1,4 +1,3 @@
-
 const initialState = {
   items: {},
   totalPrice: 0,
