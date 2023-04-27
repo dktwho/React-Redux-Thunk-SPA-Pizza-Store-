@@ -32,7 +32,14 @@ switch (action.type) {
       items: newItems,
       totalCount: allPizzas.length,
       totalPrice,
-      }   
+      }   ;
+    }
+
+    case 'CLEAR_CART':
+    return {
+      items: {},
+      totalPrice: 0,
+      totalCount: 0,
     }
 
   default:
