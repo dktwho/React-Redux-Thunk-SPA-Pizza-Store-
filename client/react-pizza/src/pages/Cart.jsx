@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { CartItem } from '../components';
-import { clearCart, removeCartItem } from '../redux/action/cart';
+import { Button, CartItem } from '../components';
+import { clearCart, removeCartItem, plusItem, minusItem } from '../redux/action/cart';
 import cartEmpty from '../assets/img/empty-cart.png';
 
 const Cart = () => {
@@ -24,6 +24,18 @@ const Cart = () => {
     if (window.confirm('Вы действительно хотитпе удалить пиццу?')) {
       dispatch(removeCartItem(id));
     }
+  };
+
+  const onPlusItem = (id) => {
+    dispatch(plusItem(id));
+  };
+
+  const onMinusItem = (id) => {
+    dispatch(minusItem(id));
+  };
+
+  const onClickOrder = () => {
+    console.log('Ваш заказ', items);
   };
 
   return (
@@ -116,6 +128,8 @@ const Cart = () => {
                   totalPrice={items[obj.id].totalPrice}
                   totalCount={items[obj.id].items.length}
                   onRemove={onRemoveItem}
+                  onPlus={onPlusItem}
+                  onMinus={onMinusItem}
                 />
               ))}
             </div>
@@ -129,33 +143,37 @@ const Cart = () => {
                 </span>
               </div>
               <div className="cart__bottom-buttons">
-                <a href="/" className="button button--outline button--add go-back-btn">
-                  <svg
-                    width="8"
-                    height="14"
-                    viewBox="0 0 8 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7 13L1 6.93015L6.86175 1"
-                      stroke="#D3D3D3"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                <svg
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 13L1 6.93015L6.86175 1"
+                    stroke="#D3D3D3"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
 
+                <Link to="/">
                   <span>Вернуться назад</span>
-                </a>
-                <div className="button pay-btn">
+                </Link>
+
+                <Button onClick={onClickOrder} className="pay-btn">
                   <span>Оплатить сейчас</span>
-                </div>
+                </Button>
               </div>
             </div>
           </div>
         ) : (
           <div className="cart cart--empty">
+            <h2>
+              Корзина пустая <i>🙄</i>
+            </h2>
             <p>
               Вероятней всего, вы не заказывали ещё пиццу.
               <br />
