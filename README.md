@@ -1,6 +1,3 @@
-# React-Redux-Thunk-SPA-Pizza-Store-
-84. SPA application online store of pizzas, with fake server JSONServer, used:Redux, Redux-Thunk, Router V6, Scss,React-content-loader. 
-
 # Содержание
 
 Интернет магазин пиццы
